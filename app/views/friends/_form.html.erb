@@ -1,0 +1,60 @@
+<%= form_with(model: friend) do |form| %>
+  <% if friend.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--<div class="mb-4 p-5 bg-secondary text-white rounded">-->
+  <div class="row">
+    <div class="col">
+      <div class="form-floating mb-3">
+        <%= form.text_field :first_name, class: "form-control", placeholder: "first name", id: "floatingInput" %>
+        <%= form.label :first_name, style: "display: block", for: "floatingInput" %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-floating mb-3">
+        <%= form.text_field :last_name, class: "form-control", placeholder: "last name", id: "floatingInput" %>
+        <%= form.label :last_name, style: "display: block", for: "floatingInput" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :email, class: "form-control", placeholder: "email", id: "floatingInput" %>
+    <%= form.label :email, style: "display: block", for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :phone, class: "form-control", placeholder: "phone number", id: "floatingInput" %>
+    <%= form.label :phone, style: "display: block", for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :twitter, class: "form-control", placeholder: "@twitterhandle", id: "floatingInput" %>
+    <%= form.label :twitter, style: "display: block", for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.number_field :user_id, id: :friend_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+
+  <div>
+    <p>
+      
+    </p>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-dark" %>
+  </div>
+<!--</div>-->
+<% end %>
